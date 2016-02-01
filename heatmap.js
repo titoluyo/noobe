@@ -8,12 +8,12 @@ function initialize() {
     var canvas = document.getElementById('map-canvas');
     var mapOptions = {
         zoom: 16,
-        center : sanFrancisco
+        center : lima
     };
     map = new google.maps.Map(canvas,mapOptions);
 
     // Heatmap layer
-    $.getJSON('heatmapdata.json', function (data) {
+    $.getJSON('http://noobe.jinme.org:8080/gas', function (data) {
 
         var dataLength = data.length;
         var heatMapData = [];
