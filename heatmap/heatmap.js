@@ -13,7 +13,7 @@ function initialize() {
     map = new google.maps.Map(canvas,mapOptions);
 
     // Heatmap layer
-    $.getJSON('http://noobe.jinme.org:8080/gas', function (data) {
+    $.getJSON('http://noobe.jinme.org:8080/gas?limit=1000', function (data) {
 
         var dataLength = data.length;
         var heatMapData = [];
