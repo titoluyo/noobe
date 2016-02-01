@@ -17,13 +17,16 @@ function initialize() {
 
         var dataLength = data.length;
         var heatMapData = [];
+        var bounds = new google.maps.LatLngBounds();
         for (var i = 0; i < dataLength; i++) {
             // Este el formato de datos con "peso"
             // revisar https://developers.google.com/maps/documentation/javascript/reference#WeightedLocation
+            var point = new google.maps.LatLng(data[i].pos);
             heatMapData.push({
-                location: new google.maps.LatLng(data[i].pos),
+                location: point,
                 weight: data[i].weight
             });
+            bounds.extend(point);
         }
 
         var heatmap = new google.maps.visualization.HeatmapLayer({
@@ -33,6 +36,7 @@ function initialize() {
             //, gradient: gradient
         });
         heatmap.setMap(map);
+        map.fitBounds(bounds);
     });
     
 }
